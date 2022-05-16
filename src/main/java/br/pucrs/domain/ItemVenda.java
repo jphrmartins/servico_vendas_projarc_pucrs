@@ -43,6 +43,9 @@ public class ItemVenda {
         this.quantidade = quantidade;
     }
 
+    public ItemVenda() {
+    }
+
     @Override
     public String toString() {
         return "ItemVenda{" +
