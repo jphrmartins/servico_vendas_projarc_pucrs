@@ -1,10 +1,16 @@
 package br.pucrs.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class ItemVenda {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @ManyToOne
     private Produto produto;
     private double precoVenda;
     private int quantidade;
-
 
     public int getQuantidade() {
         return quantidade;
