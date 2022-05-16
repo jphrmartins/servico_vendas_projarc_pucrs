@@ -1,25 +1,21 @@
 package br.pucrs.domain;
 
+import java.util.List;
+
 public class Venda {
-    private String codigoProduto;
-    private String descricao;
-    private int quantidade;
 
-    public Venda(String codigoProduto, String descricao, int quantidade) {
-        this.codigoProduto = codigoProduto;
-        this.descricao = descricao;
-        this.quantidade = quantidade;
-    }
+    List<ItemVenda> itensVenda;
 
-    public String getCodigoProduto() {
-        return codigoProduto;
-    }
+    double impostos;
 
-    public String getDescricao() {
-        return descricao;
-    }
+    double custos;
 
-    public int getQuantidade() {
-        return quantidade;
-    }
+    double descontos;
+
+    double totalAPagar;
+
+    String endereco;
+
+
+
 }
