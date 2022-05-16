@@ -1,4 +1,4 @@
-package br.pucrs.domain;
+package br.pucrs.domain.entity;
 
 import javax.persistence.*;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class ItemEstoque {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @ManyToOne
     private Produto produto;
     private int quantidade;

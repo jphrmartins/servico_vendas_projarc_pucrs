@@ -1,4 +1,4 @@
-package br.pucrs.domain;
+package br.pucrs.domain.entity;
 
 import java.util.List;
 

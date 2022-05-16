@@ -1,21 +1,21 @@
 package br.pucrs;
 
-import br.pucrs.domain.ItemCarrinho;
+import br.pucrs.domain.entity.ItemVenda;
 
 public class ParamSubtotal_DTO {
-    private ItemCarrinho[] itens;
+    private ItemVenda[] itens;
     private String endereco;
 
-    public ParamSubtotal_DTO(ItemCarrinho[] itens, String endereco) {
+    public ParamSubtotal_DTO(ItemVenda[] itens, String endereco) {
         this.itens = itens;
         this.endereco = endereco;
     }
 
-    public ItemCarrinho[] getItens() {
+    public ItemVenda[] getItens() {
         return itens;
     }
 
-    public void setItens(ItemCarrinho[] itens) {
+    public void setItens(ItemVenda[] itens) {
         this.itens = itens;
     }
 

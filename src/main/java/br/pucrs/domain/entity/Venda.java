@@ -1,4 +1,4 @@
-package br.pucrs.domain;
+package br.pucrs.domain.entity;
 
 import javax.persistence.*;
 import java.util.List;
