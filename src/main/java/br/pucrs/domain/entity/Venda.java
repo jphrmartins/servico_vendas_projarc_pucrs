@@ -16,6 +16,8 @@ public class Venda {
 
     private double custos;
 
+    private double custoFrete;
+
     private double descontos;
 
     private double totalAPagar;
@@ -76,5 +78,13 @@ public class Venda {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public double getCustoFrete() {
+        return custoFrete;
+    }
+
+    public void setCustoFrete(double custoFrete) {
+        this.custoFrete = custoFrete;
     }
 }
