@@ -4,7 +4,12 @@ import br.pucrs.domain.entity.ItemEstoque;
 import br.pucrs.domain.repository.ItemEstoqueRepository;
 import br.pucrs.repository.ItemEstoqueSpringRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 public class ItemEstoqueRepositoryAdapter implements ItemEstoqueRepository {
@@ -14,5 +19,10 @@ public class ItemEstoqueRepositoryAdapter implements ItemEstoqueRepository {
     @Override
     public ItemEstoque save(ItemEstoque model) {
         return this.repository.save(model);
+    }
+
+    @Override
+    public List<ItemEstoque> findAll() {
+        return Streamable.of(this.repository.findAll()).toList();
     }
 }

@@ -35,7 +35,7 @@ class ServicoDeVendas {
     return null;
   }
 
-  async calculaSubtotal(itens,endereco) {
+  async calculaSubtotal(itens, endereco) {
     const url = this.baseUrl + "/vendas/subtotal";
     const lstItens = [];
 
@@ -43,7 +43,7 @@ class ServicoDeVendas {
       lstItens.push({ codigo: item.produto.codigo, quantidade: item.qtdade });
     });
 
-    const param = { itens:lstItens, endereco:endereco }
+    const param = { itens: lstItens, endereco: endereco };
 
     const otherParam = {
       headers: { "content-type": "application/json" },
@@ -90,7 +90,7 @@ class ServicoDeVendas {
   }
 
   async getProdutos() {
-    const url = this.baseUrl + "/vendas/produtos";
+    const url = this.baseUrl + "/estoque/produtos-disponiveis";
     const produtos = [];
 
     try {
