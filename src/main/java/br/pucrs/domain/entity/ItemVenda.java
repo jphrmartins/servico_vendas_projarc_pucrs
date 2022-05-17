@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class ItemVenda {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @ManyToOne
     private Produto produto;
     private double precoVenda;
