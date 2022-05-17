@@ -7,7 +7,7 @@ import java.util.List;
 public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @OneToMany
     List<ItemVenda> itensVenda;
