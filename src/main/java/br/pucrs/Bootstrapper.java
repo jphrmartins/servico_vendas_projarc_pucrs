@@ -2,9 +2,9 @@ package br.pucrs;
 
 import br.pucrs.domain.entity.ItemEstoque;
 import br.pucrs.domain.entity.Produto;
+import br.pucrs.domain.repository.ItemEstoqueRepository;
 import br.pucrs.domain.repository.ProdutoRepository;
-import br.pucrs.repository.ItemEstoqueRepository;
-import br.pucrs.repository.ProdutoSpringRepository;
+import br.pucrs.repository.ItemEstoqueSpringRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
