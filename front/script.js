@@ -37,9 +37,8 @@ async function mudarQuantidade(itemCarrinhoView) {
 }
 
 async function adicionarAoCarrinho(produto) {
-  
   let qtd = await carrinho.quantidade(produto.codigo);
-  
+
   if (qtd > 0) {
     let autorizado = await servico.autoriza(produto.codigo, qtd + 1);
     if (autorizado) {
@@ -50,10 +49,10 @@ async function adicionarAoCarrinho(produto) {
   } else {
     let autorizado = await servico.autoriza(produto.codigo, 1);
     if (!autorizado) return saida.produtoIndisponivel();
-    
+
     let view = carrinho.adicionarItem(produto);
     bindItem(view);
-    
+
     btnCheckout.disabled = false;
     btnClear.disabled = false;
   }
@@ -66,12 +65,13 @@ async function calcularSubtotal() {
   let itens = carrinho.carrinho.itens;
   let endereco = inpEndereco.value;
 
-  totais = await servico.calculaSubtotal(itens,endereco);
+  totais = await servico.calculaSubtotal(itens, endereco);
 
   console.log("TESTE");
   console.log(totais);
 
-  if (totais !== null) total.definirValores(totais[0], totais[1], totais[2], totais[3]);
+  if (totais !== null)
+    total.definirValores(totais[0], totais[1], totais[2], totais[3]);
   else {
     saida.erroInternoDoServidor();
     total.limpar();
@@ -92,7 +92,8 @@ function limparCarrinho() {
 
 async function checkout() {
   let itens = carrinho.carrinho.itens;
-  let confirmou = await servico.confirmaVenda(itens);
+  let endereco = inpEndereco.value;
+  let confirmou = await servico.confirmaVenda(itens, endereco);
 
   console.log(confirmou);
 

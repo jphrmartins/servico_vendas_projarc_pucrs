@@ -63,7 +63,7 @@ class ServicoDeVendas {
     return null;
   }
 
-  async confirmaVenda(itens) {
+  async confirmaVenda(itens, endereco) {
     const url = this.baseUrl + "/vendas/confirmacao";
     const param = [];
 
@@ -73,7 +73,7 @@ class ServicoDeVendas {
 
     const otherParam = {
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(param),
+      body: JSON.stringify({ itens: param, endereco }),
       method: "POST",
     };
 
