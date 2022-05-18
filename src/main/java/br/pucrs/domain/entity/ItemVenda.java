@@ -36,8 +36,7 @@ public class ItemVenda {
         this.precoVenda = precoVenda;
     }
 
-
-    public ItemVenda(Produto produto, double precoVenda, int quantidade) {
+    public ItemVenda(Produto produto, int quantidade, double precoVenda) {
         this.produto = produto;
         this.precoVenda = precoVenda;
         this.quantidade = quantidade;

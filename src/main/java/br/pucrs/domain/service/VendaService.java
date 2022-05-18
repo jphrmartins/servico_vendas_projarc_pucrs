@@ -1,9 +1,7 @@
 package br.pucrs.domain.service;
 
-import java.util.List;
-
-import br.pucrs.adapter.dto.ItemVendaDTO;
+import br.pucrs.adapter.dto.VendaDTO;
 
 public interface VendaService {
-    void confirm(List<ItemVendaDTO> itens);
+    void confirm(VendaDTO dto);
 }
