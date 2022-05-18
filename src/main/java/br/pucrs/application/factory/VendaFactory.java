@@ -1,18 +1,14 @@
 package br.pucrs.application.factory;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.pucrs.adapter.dto.ItemVendaDTO;
 import br.pucrs.adapter.dto.VendaDTO;
 import br.pucrs.application.calculator.CostCalculator;
 import br.pucrs.application.constants.CostType;
 import br.pucrs.domain.entity.ItemVenda;
-import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.entity.Venda;
 import br.pucrs.domain.repository.ProdutoRepository;
 
@@ -25,21 +21,12 @@ public class VendaFactory {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public Venda create(VendaDTO dto) {
+    public Venda create(VendaDTO dto, List<ItemVenda> itens) {
         Venda venda = new Venda();
         this.setAllCosts(dto, venda);
-        this.setItems(dto, venda);
+        venda.setItensVenda(itens);
         venda.setEndereco(dto.getEndereco());
         return venda;
-    }
-
-    private void setItems(VendaDTO dto, Venda venda) {
-        List<Integer> productIds = dto.getItens().stream().map(ItemVendaDTO::getCodigo).collect(Collectors.toList());
-        Map<Integer, List<Produto>> products = produtoRepository.findAllById(productIds).stream()
-                .collect(Collectors.groupingBy(Produto::getCodigo));
-        List<ItemVenda> itensVenda = dto.getItens().stream().map(item -> this.fromItemDTO(item, products))
-                .collect(Collectors.toList());
-        venda.setItensVenda(itensVenda);
     }
 
     private void setAllCosts(VendaDTO dto, Venda venda) {
@@ -54,11 +41,6 @@ public class VendaFactory {
                 .findFirst()
                 .get()
                 .calculate(dto);
-    }
-
-    private ItemVenda fromItemDTO(ItemVendaDTO item, Map<Integer, List<Produto>> products) {
-        Produto product = products.get(item.getCodigo()).get(0);
-        return new ItemVenda(product, item.getQuantidade(), product.getPreco());
     }
 
 }
