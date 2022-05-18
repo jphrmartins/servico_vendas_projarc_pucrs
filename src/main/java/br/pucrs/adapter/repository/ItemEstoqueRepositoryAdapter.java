@@ -1,6 +1,5 @@
 package br.pucrs.adapter.repository;
 
-import br.pucrs.application.repository.ItemEstoqueSpringRepository;
 import br.pucrs.domain.entity.ItemEstoque;
 import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.repository.ItemEstoqueRepository;
@@ -10,8 +9,6 @@ import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Component
 public class ItemEstoqueRepositoryAdapter implements ItemEstoqueRepository {
