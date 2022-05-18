@@ -11,7 +11,7 @@ public class FreteCalculator implements CostCalculator {
     @Override
     public boolean canCalculate(CostType costType) {
         // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
