@@ -1,6 +1,5 @@
 package br.pucrs.adapter.repository;
 
-import br.pucrs.application.repository.ItemVendaSpringRepository;
 import br.pucrs.domain.entity.ItemVenda;
 import br.pucrs.domain.repository.ItemVendaRepository;
 

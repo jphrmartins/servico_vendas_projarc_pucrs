@@ -1,6 +1,5 @@
 package br.pucrs;
 
-import br.pucrs.application.repository.ItemEstoqueSpringRepository;
 import br.pucrs.domain.entity.ItemEstoque;
 import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.repository.ItemEstoqueRepository;

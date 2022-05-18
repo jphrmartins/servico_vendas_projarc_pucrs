@@ -1,12 +1,8 @@
 package br.pucrs.adapter.repository;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;
 
-import br.pucrs.application.repository.ProdutoSpringRepository;
 import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.repository.ProdutoRepository;
 

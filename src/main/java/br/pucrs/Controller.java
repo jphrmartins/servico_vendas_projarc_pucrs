@@ -3,7 +3,7 @@ package br.pucrs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import br.pucrs.application.repository.ProdutoSpringRepository;
+import br.pucrs.adapter.repository.ProdutoSpringRepository;
 
 @RestController
 @RequestMapping("/vendas")
