@@ -19,22 +19,22 @@ public class VendaFactory {
 
     public Venda create(VendaDTO dto, List<ItemVenda> itens) {
         Venda venda = new Venda();
-        this.setAllCosts(dto, venda);
+        this.setAllCosts(dto, venda, itens);
         venda.setItensVenda(itens);
         venda.setEndereco(dto.getEndereco());
         return venda;
     }
 
-    private void setAllCosts(VendaDTO dto, Venda venda) {
-        venda.setCustoFrete(this.calculate(CostType.FRETE, dto));
-        venda.setDescontos(this.calculate(CostType.DESCONTO, dto));
-        venda.setImpostos(this.calculate(CostType.IMPOSTOS, dto));
+    private void setAllCosts(VendaDTO dto, Venda venda, List<ItemVenda> itens) {
+        venda.setCustoFrete(this.calculate(CostType.FRETE, dto, itens));
+        venda.setDescontos(this.calculate(CostType.DESCONTO, dto, itens));
+        venda.setImpostos(this.calculate(CostType.IMPOSTOS, dto, itens));
     }
 
-    private double calculate(CostType type, VendaDTO dto) {
+    private double calculate(CostType type, VendaDTO dto, List<ItemVenda> itens) {
         return this.calculators.stream()
                 .filter(calculator -> calculator.canCalculate(type))
-                .map(calculator -> calculator.calculate(dto))
+                .map(calculator -> calculator.calculate(dto, itens))
                 .reduce(0.0, Double::sum);
     }
 
