@@ -23,6 +23,10 @@ public class Produto {
     public Produto() {
     }
 
+    public Produto(Integer codigo) {
+        this.codigo = codigo;
+    }
+
     public int getCodigo() {
         return codigo;
     }

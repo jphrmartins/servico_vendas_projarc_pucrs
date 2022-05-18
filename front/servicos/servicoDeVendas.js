@@ -1,6 +1,6 @@
 class ServicoDeVendas {
   async autoriza(codigo, quantidade) {
-    let url = this.baseUrl + "/vendas/autorizacao";
+    let url = this.baseUrl + "/estoque/validar-quantidade";
     url += "?codProd=" + codigo + "&qtdade=" + quantidade;
 
     try {

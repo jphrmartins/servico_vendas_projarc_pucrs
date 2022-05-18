@@ -24,4 +24,9 @@ public class ItemEstoqueService {
 
     }
 
+    public boolean checkAvailability(int productCode, int quantity) {
+        ItemEstoque item = this.repository.findOneByCodigoProduto(productCode);
+        if (item == null) return false;
+        return item.getQuantidade() >= quantity;
+    }
 }

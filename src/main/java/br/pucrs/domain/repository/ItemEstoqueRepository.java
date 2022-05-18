@@ -9,4 +9,7 @@ public interface ItemEstoqueRepository {
     ItemEstoque save(ItemEstoque model);
 
     List<ItemEstoque> findAll();
+
+    ItemEstoque findOneByCodigoProduto(Integer codigoProduto);
+
 }

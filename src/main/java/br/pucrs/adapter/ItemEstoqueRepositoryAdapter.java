@@ -1,6 +1,7 @@
 package br.pucrs.adapter;
 
 import br.pucrs.domain.entity.ItemEstoque;
+import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.repository.ItemEstoqueRepository;
 import br.pucrs.repository.ItemEstoqueSpringRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,11 @@ public class ItemEstoqueRepositoryAdapter implements ItemEstoqueRepository {
     @Override
     public List<ItemEstoque> findAll() {
         return Streamable.of(this.repository.findAll()).toList();
+    }
+
+    @Override
+    public ItemEstoque findOneByCodigoProduto(Integer codigoProduto) {
+        Produto produto = new Produto(codigoProduto);
+        return this.repository.findOneByProduto(produto);
     }
 }
