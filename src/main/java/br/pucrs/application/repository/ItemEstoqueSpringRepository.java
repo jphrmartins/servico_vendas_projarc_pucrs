@@ -1,4 +1,4 @@
-package br.pucrs.repository;
+package br.pucrs.application.repository;
 
 import br.pucrs.domain.entity.ItemEstoque;
 import br.pucrs.domain.entity.Produto;

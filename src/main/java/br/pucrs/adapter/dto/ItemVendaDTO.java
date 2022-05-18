@@ -1,4 +1,4 @@
-package br.pucrs.dto;
+package br.pucrs.adapter.dto;
 
 public class ItemVendaDTO {
 

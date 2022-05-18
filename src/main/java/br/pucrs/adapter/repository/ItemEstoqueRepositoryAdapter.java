@@ -1,9 +1,10 @@
-package br.pucrs.adapter;
+package br.pucrs.adapter.repository;
 
+import br.pucrs.application.repository.ItemEstoqueSpringRepository;
 import br.pucrs.domain.entity.ItemEstoque;
 import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.repository.ItemEstoqueRepository;
-import br.pucrs.repository.ItemEstoqueSpringRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;

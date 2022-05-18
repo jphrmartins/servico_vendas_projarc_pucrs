@@ -1,8 +1,9 @@
-package br.pucrs.adapter;
+package br.pucrs.adapter.repository;
 
+import br.pucrs.application.repository.ProdutoSpringRepository;
 import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.repository.ProdutoRepository;
-import br.pucrs.repository.ProdutoSpringRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

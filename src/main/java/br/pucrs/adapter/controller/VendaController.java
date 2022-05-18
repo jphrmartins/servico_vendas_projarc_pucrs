@@ -1,4 +1,4 @@
-package br.pucrs.controller;
+package br.pucrs.adapter.controller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.pucrs.dto.ItemVendaDTO;
-import br.pucrs.service.VendaService;
+import br.pucrs.adapter.dto.ItemVendaDTO;
+import br.pucrs.domain.service.VendaService;
 
 @RestController
 @RequestMapping("/vendas")

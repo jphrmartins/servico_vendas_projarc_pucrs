@@ -1,8 +1,9 @@
-package br.pucrs.adapter;
+package br.pucrs.adapter.repository;
 
+import br.pucrs.application.repository.ItemVendaSpringRepository;
 import br.pucrs.domain.entity.ItemVenda;
 import br.pucrs.domain.repository.ItemVendaRepository;
-import br.pucrs.repository.ItemVendaSpringRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

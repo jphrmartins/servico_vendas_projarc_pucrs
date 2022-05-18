@@ -1,8 +1,9 @@
 package br.pucrs;
 
-import br.pucrs.repository.ProdutoSpringRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import br.pucrs.application.repository.ProdutoSpringRepository;
 
 @RestController
 @RequestMapping("/vendas")

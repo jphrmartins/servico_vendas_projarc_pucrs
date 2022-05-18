@@ -1,4 +1,4 @@
-package br.pucrs.constants;
+package br.pucrs.application.constants;
 
 public class StoreAddress {
     public static final double latitude = -30.058415818836124;

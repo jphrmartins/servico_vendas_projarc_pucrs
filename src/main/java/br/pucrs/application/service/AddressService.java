@@ -1,7 +1,8 @@
-package br.pucrs.service;
+package br.pucrs.application.service;
 
-import br.pucrs.constants.StoreAddress;
 import org.springframework.stereotype.Component;
+
+import br.pucrs.application.constants.StoreAddress;
 
 @Component
 public class AddressService {
