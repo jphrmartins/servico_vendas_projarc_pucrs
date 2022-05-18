@@ -7,7 +7,10 @@ import br.pucrs.domain.entity.ItemVenda;
 
 import java.util.List;
 
-public class SimpleFeeCalculator implements CostCalculator {
+public class SecondLocationFeeCalculator implements CostCalculator {
+    private static final double HIGH_FEE_PERCENTAGE = 0.10;
+    private static final double LOW_FEE_PERCENTAGE = 0.20;
+
     @Override
     public boolean canCalculate(CostType costType) {
         return CostType.IMPOSTOS.equals(costType);
@@ -15,7 +18,10 @@ public class SimpleFeeCalculator implements CostCalculator {
 
     @Override
     public double calculate(VendaDTO venda, List<ItemVenda> itens) {
-        //venda.getItens().stream().map(it -> it.);
-        return 0;
+        double total = itens.stream().map(ItemVenda::getPrecoVenda).reduce(0.0, Double::sum);
+        if (total > 800) {
+            return total * HIGH_FEE_PERCENTAGE;
+        }
+        return total * LOW_FEE_PERCENTAGE;
     }
 }
