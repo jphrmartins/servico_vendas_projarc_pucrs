@@ -37,7 +37,9 @@ public class VendaFactory {
         List<Integer> productIds = dto.getItens().stream().map(ItemVendaDTO::getCodigo).collect(Collectors.toList());
         Map<Integer, List<Produto>> products = produtoRepository.findAllById(productIds).stream()
                 .collect(Collectors.groupingBy(Produto::getCodigo));
-        dto.getItens().stream().map(item -> this.fromItemDTO(item, products));
+        List<ItemVenda> itensVenda = dto.getItens().stream().map(item -> this.fromItemDTO(item, products))
+                .collect(Collectors.toList());
+        venda.setItensVenda(itensVenda);
     }
 
     private void setAllCosts(VendaDTO dto, Venda venda) {
