@@ -19,8 +19,13 @@ public class VendaController {
     private VendaService vendaService;
 
     @PostMapping("/confirmacao")
-    public void confirm(@RequestBody List<ItemVendaDTO> itens) {
-        vendaService.confirm(itens);
+    public boolean confirm(@RequestBody List<ItemVendaDTO> itens) {
+        try {
+            vendaService.confirm(itens);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
