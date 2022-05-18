@@ -34,9 +34,8 @@ public class VendaFactory {
     private double calculate(CostType type, VendaDTO dto) {
         return this.calculators.stream()
                 .filter(calculator -> calculator.canCalculate(type))
-                .findFirst()
-                .get()
-                .calculate(dto);
+                .map(calculator -> calculator.calculate(dto))
+                .reduce(0.0, Double::sum);
     }
 
 }
