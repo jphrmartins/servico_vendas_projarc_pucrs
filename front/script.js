@@ -67,11 +67,13 @@ async function calcularSubtotal() {
 
   totais = await servico.calculaSubtotal(itens, endereco);
 
-  console.log("TESTE");
-  console.log(totais);
-
   if (totais !== null)
-    total.definirValores(totais[0], totais[1], totais[2], totais[3]);
+    total.definirValores(
+      totais.subtotal,
+      totais.imposto,
+      totais.total,
+      totais.frete
+    );
   else {
     saida.erroInternoDoServidor();
     total.limpar();

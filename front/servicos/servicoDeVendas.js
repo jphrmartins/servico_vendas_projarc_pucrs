@@ -36,7 +36,7 @@ class ServicoDeVendas {
   }
 
   async calculaSubtotal(itens, endereco) {
-    const url = this.baseUrl + "/vendas/subtotal";
+    const url = this.baseUrl + "/vendas/simular";
     const lstItens = [];
 
     itens.forEach((item) => {
