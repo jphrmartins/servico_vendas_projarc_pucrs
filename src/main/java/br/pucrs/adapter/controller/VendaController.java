@@ -26,6 +26,7 @@ public class VendaController {
             vendaService.confirm(dto);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
