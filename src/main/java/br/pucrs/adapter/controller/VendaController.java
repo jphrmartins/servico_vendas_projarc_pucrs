@@ -2,6 +2,7 @@ package br.pucrs.adapter.controller;
 
 import java.util.List;
 
+import br.pucrs.adapter.dto.SimulacaoVendaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,11 @@ public class VendaController {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @PostMapping("/simular")
+    public SimulacaoVendaDTO simulate(@RequestBody VendaDTO dto) {
+        return this.vendaService.simulate(dto);
     }
 
     @GetMapping()

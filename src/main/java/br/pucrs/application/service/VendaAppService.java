@@ -3,7 +3,9 @@ package br.pucrs.application.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.pucrs.adapter.dto.SimulacaoVendaDTO;
 import br.pucrs.domain.entity.ItemVenda;
+import br.pucrs.domain.repository.ProdutoRepository;
 import br.pucrs.domain.service.ItemVendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,13 @@ public class VendaAppService implements VendaService {
         vendaDTO.getItens().forEach(item -> estoqueService.updateQuantity(item.getCodigo(), item.getQuantidade()));
         List<ItemVenda> itens = vendaDTO.getItens().stream().map(item -> this.itemVendaService.saveFromDTO(item)).collect(Collectors.toList());
         this.repository.save(this.factory.create(vendaDTO, itens));
+    }
+
+    @Override
+    public SimulacaoVendaDTO simulate(VendaDTO dto) {
+        List<ItemVenda> itens = dto.getItens().stream().map(item -> this.itemVendaService.createModelFromDTO(item)).collect(Collectors.toList());
+        Venda venda = this.factory.create(dto, itens);
+        return SimulacaoVendaDTO.fromVenda(venda);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package br.pucrs.application.factory;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,16 @@ public class VendaFactory {
     public Venda create(VendaDTO dto, List<ItemVenda> itens) {
         Venda venda = new Venda();
         this.setAllCosts(dto, venda);
+        this.setSubtotal(venda, itens);
+        venda.setTotalAPagar((venda.getCustos() - venda.getDescontos()) + venda.getCustoFrete());
         venda.setItensVenda(itens);
         venda.setEndereco(dto.getEndereco());
         return venda;
+    }
+
+    private void setSubtotal(Venda venda, List<ItemVenda> itens) {
+        Double sum = itens.stream().map(ItemVenda::getPrecoVenda).reduce(0.0, Double::sum);
+        venda.setCustos(sum);
     }
 
     private void setAllCosts(VendaDTO dto, Venda venda) {
