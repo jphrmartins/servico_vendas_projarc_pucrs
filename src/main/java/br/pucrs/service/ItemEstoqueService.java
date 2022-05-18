@@ -15,6 +15,12 @@ public class ItemEstoqueService {
     @Autowired
     private ItemEstoqueRepository repository;
 
+    public void updateQuantity(int code, int quantity) {
+        ItemEstoque item = this.repository.findOneByCodigoProduto(code);
+        item.setQuantidade(item.getQuantidade() - quantity);
+        this.repository.save(item);
+    }
+
     public List<Produto> findAvailableProducts() {
         return repository.findAll()
                 .stream()
