@@ -10,6 +10,6 @@ public interface ProdutoRepository {
 
     Iterable<Produto> findAll();
 
-    List<Produto> findAllById(Iterable<Integer> ids);
+    Produto findById(Integer id);
 
 }

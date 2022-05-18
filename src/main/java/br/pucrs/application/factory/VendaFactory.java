@@ -10,16 +10,12 @@ import br.pucrs.application.calculator.CostCalculator;
 import br.pucrs.application.constants.CostType;
 import br.pucrs.domain.entity.ItemVenda;
 import br.pucrs.domain.entity.Venda;
-import br.pucrs.domain.repository.ProdutoRepository;
 
 @Component
 public class VendaFactory {
 
     @Autowired
     private List<CostCalculator> calculators;
-
-    @Autowired
-    private ProdutoRepository produtoRepository;
 
     public Venda create(VendaDTO dto, List<ItemVenda> itens) {
         Venda venda = new Venda();

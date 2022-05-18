@@ -26,7 +26,7 @@ public class ProdutoRepositoryAdapter implements ProdutoRepository {
     }
 
     @Override
-    public List<Produto> findAllById(Iterable<Integer> ids) {
-        return Streamable.of(this.repository.findAllById(ids)).toList();
+    public Produto findById(Integer id) {
+        return this.repository.findById(id).orElse(null);
     }
 }

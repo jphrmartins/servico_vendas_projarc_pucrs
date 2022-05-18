@@ -22,7 +22,7 @@ public class ItemVendaAppService implements ItemVendaService {
 
     @Override
     public ItemVenda saveFromDTO(ItemVendaDTO dto) {
-        Produto produto = produtoRepository.findAllById(Collections.singletonList(dto.getCodigo())).get(0);
+        Produto produto = produtoRepository.findById(dto.getCodigo());
         ItemVenda model = new ItemVenda(produto, dto.getQuantidade(), produto.getPreco() * dto.getQuantidade());
         return this.repository.save(model);
     }
