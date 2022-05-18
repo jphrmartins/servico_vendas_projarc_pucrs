@@ -15,7 +15,7 @@ public class SimpleFeeCalculator implements CostCalculator {
 
     @Override
     public double calculate(VendaDTO venda, List<ItemVenda> itens) {
-        venda.getItens();
+        //venda.getItens().stream().map(it -> it.);
         return 0;
     }
 }
