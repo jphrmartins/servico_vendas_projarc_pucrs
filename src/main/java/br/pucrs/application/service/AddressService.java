@@ -29,7 +29,7 @@ public class AddressService {
 
     public double distanceFromStore(String address) {
         Map<String, Double> coords = geoCodingService.getLatitudeLongitude(address);
-        return distanceFromStore(coords.get("lon"),coords.get("lat"));
+        return distanceFromStore(coords.get("lat"), coords.get("lon"));
     }
 
 }
