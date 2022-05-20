@@ -28,6 +28,7 @@ public class AddressService {
 
 
     public double distanceFromStore(String address) {
+        if (address == null || address.isEmpty()) throw new RuntimeException("Endereço obrigatório");
         Map<String, Double> coords = geoCodingService.getLatitudeLongitude(address);
         return distanceFromStore(coords.get("lat"), coords.get("lon"));
     }
