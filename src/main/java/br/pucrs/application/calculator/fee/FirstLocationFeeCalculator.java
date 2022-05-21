@@ -8,7 +8,7 @@ import br.pucrs.domain.entity.ItemVenda;
 import java.util.List;
 
 public class FirstLocationFeeCalculator implements CostCalculator {
-    private static final double FEE_PERCENTAGE = 1.25;
+    private static final double FEE_PERCENTAGE = 0.25;
 
     @Override
     public boolean canCalculate(CostType costType) {

@@ -1,6 +1,8 @@
 package br.pucrs.application.calculator;
 
+import br.pucrs.application.service.AddressService;
 import br.pucrs.domain.entity.ItemVenda;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.pucrs.adapter.dto.VendaDTO;
@@ -11,16 +13,17 @@ import java.util.List;
 @Component
 public class FreteCalculator implements CostCalculator {
 
+    @Autowired
+    AddressService addressService;
+
     @Override
     public boolean canCalculate(CostType costType) {
-        // TODO Auto-generated method stub
-        return true;
+        return costType == CostType.FRETE;
     }
 
     @Override
     public double calculate(VendaDTO venda, List<ItemVenda> itens) {
-        // TODO Auto-generated method stub
-        return 0;
+        return addressService.distanceFromStore(venda.getEndereco());
     }
 
 }
