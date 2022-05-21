@@ -8,9 +8,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ItemVendaRepositoryAdapter implements ItemVendaRepository {
+    private ItemVendaSpringRepository repository;
 
     @Autowired
-    private ItemVendaSpringRepository repository;
+    public ItemVendaRepositoryAdapter(ItemVendaSpringRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public ItemVenda save(ItemVenda model) {

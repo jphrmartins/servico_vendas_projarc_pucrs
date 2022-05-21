@@ -8,8 +8,12 @@ import br.pucrs.domain.repository.ProdutoRepository;
 
 @Component
 public class ProdutoRepositoryAdapter implements ProdutoRepository {
-    @Autowired
     private ProdutoSpringRepository repository;
+
+    @Autowired
+    public ProdutoRepositoryAdapter(ProdutoSpringRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Produto save(Produto entity) {

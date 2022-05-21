@@ -13,9 +13,12 @@ import br.pucrs.domain.service.ItemEstoqueService;
 
 @Service
 public class ItemEstoqueAppService implements ItemEstoqueService {
+    private ItemEstoqueRepository repository;
 
     @Autowired
-    private ItemEstoqueRepository repository;
+    public ItemEstoqueAppService(ItemEstoqueRepository repository) {
+        this.repository = repository;
+    }
 
     public void updateQuantity(int code, int quantity) {
         ItemEstoque item = this.repository.findOneByCodigoProduto(code);

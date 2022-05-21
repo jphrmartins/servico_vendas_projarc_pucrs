@@ -15,8 +15,12 @@ import br.pucrs.domain.service.ItemEstoqueService;
 @RequestMapping("/estoque")
 public class EstoqueController {
 
-    @Autowired
     private ItemEstoqueService service;
+
+    @Autowired
+    public EstoqueController(ItemEstoqueService service) {
+        this.service = service;
+    }
 
     @GetMapping("/produtos-disponiveis")
     public List<Produto> available() {

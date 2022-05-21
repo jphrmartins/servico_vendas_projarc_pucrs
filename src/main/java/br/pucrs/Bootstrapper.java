@@ -12,12 +12,14 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class Bootstrapper {
-
-    @Autowired
     private ProdutoRepository produtoRepository;
+    private ItemEstoqueRepository itemEstoqueRepository;
 
     @Autowired
-    private ItemEstoqueRepository itemEstoqueRepository;
+    public Bootstrapper(ProdutoRepository produtoRepository, ItemEstoqueRepository itemEstoqueRepository) {
+        this.produtoRepository = produtoRepository;
+        this.itemEstoqueRepository = itemEstoqueRepository;
+    }
 
     @PostConstruct
     public void initDatabase() {

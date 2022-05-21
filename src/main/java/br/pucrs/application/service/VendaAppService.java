@@ -19,18 +19,19 @@ import br.pucrs.domain.service.VendaService;
 
 @Service
 public class VendaAppService implements VendaService {
-
-    @Autowired
     private ItemEstoqueService estoqueService;
-
-    @Autowired
     private VendaFactory factory;
-
-    @Autowired
     private VendaRepository repository;
+    private ItemVendaService itemVendaService;
 
     @Autowired
-    private ItemVendaService itemVendaService;
+    public VendaAppService(ItemEstoqueService estoqueService, VendaFactory factory,
+                           VendaRepository repository, ItemVendaService itemVendaService) {
+        this.estoqueService = estoqueService;
+        this.factory = factory;
+        this.repository = repository;
+        this.itemVendaService = itemVendaService;
+    }
 
     public void confirm(VendaDTO vendaDTO) {
         vendaDTO.getItens().forEach(item -> estoqueService.updateQuantity(item.getCodigo(), item.getQuantidade()));

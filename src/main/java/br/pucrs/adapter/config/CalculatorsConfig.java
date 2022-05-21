@@ -17,7 +17,7 @@ public class CalculatorsConfig {
     }
 
     @Bean
-    @ConditionalOnProperty(name = "location", havingValue = "dois", matchIfMissing = true)
+    @ConditionalOnProperty(name = "location", havingValue = "dois")
     CostCalculator createFeeCalculatorOfSecondLocation() {
         return new SecondLocationFeeCalculator();
     }

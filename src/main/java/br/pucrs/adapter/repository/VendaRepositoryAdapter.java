@@ -12,8 +12,12 @@ import br.pucrs.domain.repository.VendaRepository;
 @Component
 public class VendaRepositoryAdapter implements VendaRepository {
 
-    @Autowired
     private VendaSpringRepository repository;
+
+    @Autowired
+    public VendaRepositoryAdapter(VendaSpringRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Venda save(Venda model) {

@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import br.pucrs.application.calculator.SaleLimiter;
+import br.pucrs.application.exception.LimitExceedOnSaleException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +18,17 @@ import br.pucrs.domain.entity.Venda;
 @Component
 public class VendaFactory {
 
-    @Autowired
+    private SaleLimiter limiters;
     private List<CostCalculator> calculators;
+    
+    @Autowired
+    public VendaFactory(SaleLimiter limiters, List<CostCalculator> calculators) {
+        this.limiters = limiters;
+        this.calculators = calculators;
+    }
 
     public Venda create(VendaDTO dto, List<ItemVenda> itens) {
+        limiters.canProcessSale(itens);
         Venda venda = new Venda();
         this.setAllCosts(dto, venda, itens);
         this.setSubtotal(venda, itens);

@@ -12,8 +12,12 @@ import java.util.List;
 
 @Component
 public class ItemEstoqueRepositoryAdapter implements ItemEstoqueRepository {
-    @Autowired
     private ItemEstoqueSpringRepository repository;
+
+    @Autowired
+    public ItemEstoqueRepositoryAdapter(ItemEstoqueSpringRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public ItemEstoque save(ItemEstoque model) {

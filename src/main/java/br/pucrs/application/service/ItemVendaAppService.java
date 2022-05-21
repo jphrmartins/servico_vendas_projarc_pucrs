@@ -13,12 +13,14 @@ import java.util.Collections;
 
 @Service
 public class ItemVendaAppService implements ItemVendaService {
-
-    @Autowired
     private ItemVendaRepository repository;
+    private ProdutoRepository produtoRepository;
 
     @Autowired
-    private ProdutoRepository produtoRepository;
+    public ItemVendaAppService(ItemVendaRepository repository, ProdutoRepository produtoRepository) {
+        this.repository = repository;
+        this.produtoRepository = produtoRepository;
+    }
 
     @Override
     public ItemVenda saveFromDTO(ItemVendaDTO dto) {
