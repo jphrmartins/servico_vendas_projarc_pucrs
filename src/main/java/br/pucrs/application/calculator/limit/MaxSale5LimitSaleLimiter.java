@@ -6,7 +6,7 @@ import br.pucrs.domain.entity.ItemVenda;
 
 import java.util.List;
 
-public class MaxSale15LimitSaleLimiter implements SaleLimiter {
+public class MaxSale5LimitSaleLimiter implements SaleLimiter {
     private static final Integer MAX_SALE_QUANTITY = 5;
 
     @Override
