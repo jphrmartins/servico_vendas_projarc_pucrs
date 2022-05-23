@@ -7,5 +7,5 @@ import br.pucrs.domain.entity.Venda;
 import java.util.List;
 
 public interface SaleLimiter {
-    void canProcessSale(List<ItemVenda> items) throws LimitExceedOnSaleException;
+    void canProcessSale(List<Integer> quantidade) throws LimitExceedOnSaleException;
 }

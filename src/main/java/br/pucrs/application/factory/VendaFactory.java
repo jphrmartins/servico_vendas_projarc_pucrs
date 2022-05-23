@@ -3,6 +3,7 @@ package br.pucrs.application.factory;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import br.pucrs.application.calculator.SaleLimiter;
 import br.pucrs.application.exception.LimitExceedOnSaleException;
@@ -20,7 +21,7 @@ public class VendaFactory {
 
     private SaleLimiter limiters;
     private List<CostCalculator> calculators;
-    
+
     @Autowired
     public VendaFactory(SaleLimiter limiters, List<CostCalculator> calculators) {
         this.limiters = limiters;
@@ -28,7 +29,7 @@ public class VendaFactory {
     }
 
     public Venda create(VendaDTO dto, List<ItemVenda> itens) {
-        limiters.canProcessSale(itens);
+        limiters.canProcessSale(itens.stream().map(ItemVenda::getQuantidade).collect(Collectors.toList()));
         Venda venda = new Venda();
         this.setAllCosts(dto, venda, itens);
         this.setSubtotal(venda, itens);

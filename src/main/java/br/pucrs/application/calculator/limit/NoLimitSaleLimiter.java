@@ -7,6 +7,6 @@ import java.util.List;
 
 public class NoLimitSaleLimiter implements SaleLimiter {
     @Override
-    public void canProcessSale(List<ItemVenda> items) {
+    public void canProcessSale(List<Integer> quantidade) {
     }
 }

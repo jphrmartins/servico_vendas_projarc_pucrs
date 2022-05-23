@@ -56,11 +56,13 @@ class ServicoDeVendas {
       if (resposta.ok) {
         let totais = await resposta.json();
         return totais;
+      } else {
+        const erro = await resposta.json();
+        return { erro: true, ...erro };
       }
     } catch (erro) {
       console.log(erro);
     }
-    return null;
   }
 
   async confirmaVenda(itens, endereco) {

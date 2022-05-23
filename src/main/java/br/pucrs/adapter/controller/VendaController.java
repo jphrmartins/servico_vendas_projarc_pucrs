@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import br.pucrs.adapter.dto.SimulacaoVendaDTO;
+import br.pucrs.application.exception.InvalidAddressException;
 import br.pucrs.application.exception.LimitExceedOnSaleException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +53,14 @@ public class VendaController {
     public ResponseEntity<Map<String, Object>> handleBadRequest(LimitExceedOnSaleException ex) {
         Map<String, Object> body = Map.of("Message", ex.getMessage(), "status", HttpStatus.BAD_REQUEST.name());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidAddressException.class)
+    public ResponseEntity<Map<String, Object>> handleBadAddressRequest(InvalidAddressException ex) {
+        Map<String, Object> body = Map.of("Message", ex.getMessage(), "status", HttpStatus.BAD_REQUEST.name());
+        return ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(body);
     }
 
 }

@@ -23,8 +23,12 @@ class SaidaView {
     this.root.innerHTML = "N&atilde;o h&aacute; nenhuma sa&iacute;da";
   }
 
-  enderecoInvalido(){
+  enderecoInvalido() {
     this.root.innerHTML = "Endereco invalido";
+  }
+
+  custom(e) {
+    this.root.innerHTML = e;
   }
 
   constructor(root) {

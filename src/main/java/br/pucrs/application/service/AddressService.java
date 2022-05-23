@@ -1,12 +1,11 @@
 package br.pucrs.application.service;
 
 
+import br.pucrs.application.constants.StoreAddress;
+import br.pucrs.application.exception.InvalidAddressException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.pucrs.application.constants.StoreAddress;
-
-import java.io.IOException;
 import java.util.Map;
 
 @Component
@@ -28,7 +27,7 @@ public class AddressService {
 
 
     public double distanceFromStore(String address) {
-        if (address == null || address.isEmpty()) throw new RuntimeException("Endereço obrigatório");
+        if (address == null || address.isEmpty()) throw new InvalidAddressException("Endereço inválido");
         Map<String, Double> coords = geoCodingService.getLatitudeLongitude(address);
         return distanceFromStore(coords.get("lat"), coords.get("lon"));
     }
