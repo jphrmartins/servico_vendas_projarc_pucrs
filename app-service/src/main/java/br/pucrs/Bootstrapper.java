@@ -5,6 +5,7 @@ import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.repository.ItemEstoqueRepository;
 import br.pucrs.domain.repository.ProdutoRepository;
 
+import br.pucrs.rabbitmq.RabbitHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,11 +15,13 @@ import javax.annotation.PostConstruct;
 public class Bootstrapper {
     private ProdutoRepository produtoRepository;
     private ItemEstoqueRepository itemEstoqueRepository;
+    private RabbitHelper rabbitHelper;
 
     @Autowired
-    public Bootstrapper(ProdutoRepository produtoRepository, ItemEstoqueRepository itemEstoqueRepository) {
+    public Bootstrapper(ProdutoRepository produtoRepository, ItemEstoqueRepository itemEstoqueRepository, RabbitHelper rabbitHelper) {
         this.produtoRepository = produtoRepository;
         this.itemEstoqueRepository = itemEstoqueRepository;
+        this.rabbitHelper = rabbitHelper;
     }
 
     @PostConstruct
@@ -30,6 +33,11 @@ public class Bootstrapper {
             this.addToEstoque(40, "Lava roupa", 3350.0, 3);
             this.addToEstoque(50, "Aspirador de pó", 780.0, 1);
         }
+    }
+
+    @PostConstruct
+    public void initQueues() {
+        this.rabbitHelper.createQueue("Invoice");
     }
 
     private void addToEstoque(int codigo, String name, double preco, int quantidade) {
