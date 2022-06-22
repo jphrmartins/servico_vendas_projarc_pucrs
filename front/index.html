@@ -3,6 +3,9 @@
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
   <link href="main.css" rel="stylesheet" />
   <title>Sistema de Vendas 1.0</title>
 </head>
@@ -10,7 +13,7 @@
 <body>
   <!-- Conteúdo -->
   <div class="wrapper">
-    <h1><i>store</i>Sistema de Vendas 1.0</h1>
+    <h1>Sistema de Vendas</h1>
 
     <div class="content">
       <div class="half">
@@ -28,19 +31,21 @@
         </div>
 
         <div id="total">
-          <div id="txtSubtotal">Subtotal: R$ <label>0.00</label></div>
-          <div id="txtImposto">Imposto: R$ <label>0.00</label></div>
-          <div id="txtFrete">Frete: R$ <label>0.00</label></div>
-          <div id="txtTotal">Total: R$ <label>0.00</label></div>
+          <div class="organize" id="txtSubtotal">Subtotal: <div class="sub">R$ <label>0.00</label></div></div>
+          <div class="organize" id="txtImposto">Imposto: <div class="sub">R$<label>0.00</label></div></div>
+          <div class="organize" id="txtFrete">Frete: <div class="sub">R$ <label>0.00</label></div></div>
+          <div class="organize" id="txtTotal">Total: <div class="sub">R$ <label>0.00</label></div></div>
         </div>
 
         <button id="btnCheckout">Checkout</button>
         <button id="btnClear" disabled><i>delete</i></button>
 
-        <p>
-          Endereco
-          <input id="inpEndereco" type="text"/>
-        </p>
+        <div id="end">
+          <p class="txt">
+            Endereco
+          </p>
+            <input id="inpEndereco" type="text"/>
+        </div>
 
         <h3>Sa&iacute;da</h3>
         <p id="txtSaida"></p>

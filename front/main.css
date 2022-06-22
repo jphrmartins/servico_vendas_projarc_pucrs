@@ -1,13 +1,14 @@
 html,
 body {
   font-family: "Open Sans", sans-serif;
-  background: #fcfcfc;
+  background: #3a3939;
   padding: 0px;
   margin: 0px;
+  color: white;
 }
 
 input {
-  background: #fcfcfc;
+  background: #3a3939;
 }
 
 h1 {
@@ -46,9 +47,18 @@ i {
 .wrapper {
   box-sizing: border-box;
   max-width: 900px;
-  display: block;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: 0 auto;
   padding: 16px;
+}
+
+.wrapper h1{
+  font-family: 'Secular One', sans-serif;
+  font-size: 2.5rem;
+  color: #ffc0cb;
 }
 
 h1 i {
@@ -118,7 +128,7 @@ h1 i {
   grid-column: 2;
   height: 30px;
 
-  background: #ff7e67;
+  background: #ffc0cb;
   border-radius: 5px;
   color: #ffffff;
   padding: 0 16px;
@@ -129,11 +139,15 @@ h1 i {
 }
 
 .produto .select:hover {
-  background: #ff5031;
+  background: #8d5489;
+  color: white;
+  transition: 1s;
 }
 
 .produto .select:active {
-  background: #fa2500;
+  background: #8d5489;
+  color: white;
+  transition: 1s;
 }
 
 .produto .qtd {
@@ -183,4 +197,39 @@ h1 i {
 
 #btnClear i {
   font-size: 18px;
+}
+
+#total{
+  display: flex;
+  flex-direction: column;
+}
+
+#total .organize{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#total .organize .sub{
+  color: #ffc0cb;
+  font-weight: bold;
+}
+
+#end{
+  display: flex;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#end .txt{
+  margin-right: 5%;
+}
+
+#end input{
+  background: #fcfcfc;
+  height: 28px;
+  border-radius: 5px;
+  border: 1px solid #8888;
 }
