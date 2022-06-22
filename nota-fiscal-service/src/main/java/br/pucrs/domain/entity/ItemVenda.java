@@ -1,8 +1,13 @@
 package br.pucrs.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import java.util.Map;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ItemVenda {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,8 +44,14 @@ public class ItemVenda {
     @Override
     public String toString() {
         return "ItemVenda{" +
+                "produtoCodigo = " + produtoCodigo +
                 ", precoVenda=" + precoVenda +
                 ", quantidade=" + quantidade +
                 '}';
+    }
+
+    @JsonProperty("produto")
+    public void extractId(Map<String, Object> produto) {
+        this.produtoCodigo = (int) produto.get("codigo");
     }
 }

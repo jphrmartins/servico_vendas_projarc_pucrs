@@ -7,6 +7,7 @@ import br.pucrs.adapter.dto.SimulacaoVendaDTO;
 import br.pucrs.domain.entity.ItemVenda;
 import br.pucrs.domain.repository.ProdutoRepository;
 import br.pucrs.domain.service.ItemVendaService;
+import br.pucrs.rabbitmq.RabbitMQPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,20 +24,24 @@ public class VendaAppService implements VendaService {
     private VendaFactory factory;
     private VendaRepository repository;
     private ItemVendaService itemVendaService;
+    private RabbitMQPublisher publisher;
 
     @Autowired
     public VendaAppService(ItemEstoqueService estoqueService, VendaFactory factory,
-                           VendaRepository repository, ItemVendaService itemVendaService) {
+                           VendaRepository repository, ItemVendaService itemVendaService, RabbitMQPublisher publisher) {
         this.estoqueService = estoqueService;
         this.factory = factory;
         this.repository = repository;
         this.itemVendaService = itemVendaService;
+        this.publisher = publisher;
     }
 
     public void confirm(VendaDTO vendaDTO) {
         vendaDTO.getItens().forEach(item -> estoqueService.updateQuantity(item.getCodigo(), item.getQuantidade()));
         List<ItemVenda> itens = vendaDTO.getItens().stream().map(item -> this.itemVendaService.saveFromDTO(item)).collect(Collectors.toList());
-        this.repository.save(this.factory.create(vendaDTO, itens));
+        Venda venda = this.factory.create(vendaDTO, itens);
+        // publica na fila do rabbit
+        this.publisher.send(venda);
     }
 
     @Override
