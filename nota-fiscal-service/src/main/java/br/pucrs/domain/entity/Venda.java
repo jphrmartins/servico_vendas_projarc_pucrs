@@ -87,4 +87,18 @@ public class Venda {
     public void setCustoFrete(double custoFrete) {
         this.custoFrete = custoFrete;
     }
+
+    @Override
+    public String toString() {
+        return "Venda{" +
+                "id=" + id +
+                ", itensVenda=" + itensVenda +
+                ", impostos=" + impostos +
+                ", custos=" + custos +
+                ", custoFrete=" + custoFrete +
+                ", descontos=" + descontos +
+                ", totalAPagar=" + totalAPagar +
+                ", endereco='" + endereco + '\'' +
+                '}';
+    }
 }
