@@ -38,7 +38,7 @@ public class VendaAppService implements VendaService {
 
     public void confirm(VendaDTO vendaDTO) {
         vendaDTO.getItens().forEach(item -> estoqueService.updateQuantity(item.getCodigo(), item.getQuantidade()));
-        List<ItemVenda> itens = vendaDTO.getItens().stream().map(item -> this.itemVendaService.saveFromDTO(item)).collect(Collectors.toList());
+        List<ItemVenda> itens = vendaDTO.getItens().stream().map(item -> this.itemVendaService.createModelFromDTO(item)).collect(Collectors.toList());
         Venda venda = this.factory.create(vendaDTO, itens);
         // publica na fila do rabbit
         this.publisher.send(venda);

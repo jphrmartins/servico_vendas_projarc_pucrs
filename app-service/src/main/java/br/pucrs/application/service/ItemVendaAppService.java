@@ -3,28 +3,18 @@ package br.pucrs.application.service;
 import br.pucrs.adapter.dto.ItemVendaDTO;
 import br.pucrs.domain.entity.ItemVenda;
 import br.pucrs.domain.entity.Produto;
-import br.pucrs.domain.repository.ItemVendaRepository;
 import br.pucrs.domain.repository.ProdutoRepository;
 import br.pucrs.domain.service.ItemVendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-
 @Service
 public class ItemVendaAppService implements ItemVendaService {
-    private ItemVendaRepository repository;
     private ProdutoRepository produtoRepository;
 
     @Autowired
-    public ItemVendaAppService(ItemVendaRepository repository, ProdutoRepository produtoRepository) {
-        this.repository = repository;
+    public ItemVendaAppService(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
-    }
-
-    @Override
-    public ItemVenda saveFromDTO(ItemVendaDTO dto) {
-        return this.repository.save(this.createModelFromDTO(dto));
     }
 
     @Override
