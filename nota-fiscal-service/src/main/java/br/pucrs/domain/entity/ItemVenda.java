@@ -24,7 +24,6 @@ public class ItemVenda {
         this.quantidade = quantidade;
     }
 
-
     public double getPrecoVenda() {
         return precoVenda;
     }
@@ -33,12 +32,12 @@ public class ItemVenda {
         this.precoVenda = precoVenda;
     }
 
-    public ItemVenda(int quantidade, double precoVenda) {
-        this.precoVenda = precoVenda;
-        this.quantidade = quantidade;
+    public int getProdutoCodigo() {
+        return produtoCodigo;
     }
 
-    public ItemVenda() {
+    public void setProdutoCodigo(int produtoCodigo) {
+        this.produtoCodigo = produtoCodigo;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package br.pucrs.adapter.controller;
 
-import br.pucrs.adapter.service.VendaService;
+import br.pucrs.application.service.VendaAppService;
 import br.pucrs.domain.entity.Venda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,24 +12,13 @@ import java.util.List;
 @RequestMapping("/vendas")
 public class VendaController {
 
-    private VendaService vendaService;
+    private VendaAppService vendaService;
 
     @Autowired
-    public VendaController(VendaService vendaService) {
+    public VendaController(VendaAppService vendaService) {
         this.vendaService = vendaService;
     }
 
-
-    @PostMapping()
-    public boolean registrarNFE(@RequestBody Venda venda) {
-        try {
-            vendaService.save(venda);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
     @GetMapping()
     public List<Venda> buscarNFE() {
