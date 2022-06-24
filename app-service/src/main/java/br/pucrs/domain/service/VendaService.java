@@ -10,6 +10,4 @@ public interface VendaService {
     void confirm(VendaDTO dto);
 
     SimulacaoVendaDTO simulate(VendaDTO dto);
-
-    List<Venda> history();
 }

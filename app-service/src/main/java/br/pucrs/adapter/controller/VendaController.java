@@ -43,11 +43,6 @@ public class VendaController {
         return this.vendaService.simulate(dto);
     }
 
-    @GetMapping()
-    public List<Venda> history() {
-        return this.vendaService.history();
-    }
-
 
     @ExceptionHandler(LimitExceedOnSaleException.class)
     public ResponseEntity<Map<String, Object>> handleBadRequest(LimitExceedOnSaleException ex) {
