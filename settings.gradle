@@ -1,0 +1,3 @@
+rootProject.name = 'servico_vendas_projarc_pucrs'
+include 'nota-fiscal-service'
+
