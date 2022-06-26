@@ -1,6 +1,5 @@
 package br.pucrs.adapter.config;
 
-import br.pucrs.application.calculator.SaleLimiter;
 import br.pucrs.application.calculator.limit.MaxSale5LimitSaleLimiter;
 import br.pucrs.application.calculator.limit.NoLimitSaleLimiter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

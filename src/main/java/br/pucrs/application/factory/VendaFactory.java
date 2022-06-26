@@ -1,12 +1,8 @@
 package br.pucrs.application.factory;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.pucrs.application.calculator.SaleLimiter;
-import br.pucrs.application.exception.LimitExceedOnSaleException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

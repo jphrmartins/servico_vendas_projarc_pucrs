@@ -2,7 +2,6 @@ package br.pucrs.application.calculator.limit;
 
 import br.pucrs.application.calculator.SaleLimiter;
 import br.pucrs.application.exception.LimitExceedOnSaleException;
-import br.pucrs.domain.entity.ItemVenda;
 
 import java.util.List;
 
