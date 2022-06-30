@@ -3,6 +3,7 @@ package br.pucrs.application.service;
 import br.pucrs.adapter.dto.SimulacaoVendaDTO;
 import br.pucrs.adapter.dto.VendaDTO;
 import br.pucrs.application.factory.VendaFactory;
+import br.pucrs.domain.data.UpdateQuantityRequest;
 import br.pucrs.domain.entity.ItemVenda;
 import br.pucrs.domain.entity.Venda;
 import br.pucrs.domain.service.ItemEstoqueService;
@@ -32,7 +33,6 @@ public class VendaAppService implements VendaService {
     }
 
     public void confirm(VendaDTO vendaDTO) {
-        vendaDTO.getItens().forEach(item -> estoqueService.updateQuantity(item.getCodigo(), item.getQuantidade()));
         List<ItemVenda> itens = vendaDTO.getItens().stream().map(item -> this.itemVendaService.createModelFromDTO(item)).collect(Collectors.toList());
         Venda venda = this.factory.create(vendaDTO, itens);
         // publica na fila do rabbit
