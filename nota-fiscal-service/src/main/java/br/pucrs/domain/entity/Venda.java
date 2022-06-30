@@ -24,6 +24,8 @@ public class Venda {
 
     private String endereco;
 
+    private boolean errorOnProcess;
+
     public Integer getId() {
         return id;
     }
@@ -88,6 +90,14 @@ public class Venda {
         this.custoFrete = custoFrete;
     }
 
+    public boolean isErrorOnProcess() {
+        return errorOnProcess;
+    }
+
+    public void setErrorOnProcess(boolean errorOnProcess) {
+        this.errorOnProcess = errorOnProcess;
+    }
+
     @Override
     public String toString() {
         return "Venda{" +
@@ -99,6 +109,7 @@ public class Venda {
                 ", descontos=" + descontos +
                 ", totalAPagar=" + totalAPagar +
                 ", endereco='" + endereco + '\'' +
+                ", errorOnProcess=" + errorOnProcess +
                 '}';
     }
 }

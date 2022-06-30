@@ -7,6 +7,7 @@ import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class VendaRepositoryAdapter implements VendaRepository {
@@ -26,5 +27,10 @@ public class VendaRepositoryAdapter implements VendaRepository {
     @Override
     public List<Venda> findAll() {
         return Streamable.of(this.repository.findAll()).toList();
+    }
+
+    @Override
+    public Optional<Venda> find(Integer vendaId) {
+        return this.repository.findById(vendaId);
     }
 }

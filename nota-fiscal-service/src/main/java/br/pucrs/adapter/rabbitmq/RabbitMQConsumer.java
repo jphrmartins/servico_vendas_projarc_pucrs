@@ -15,8 +15,8 @@ public class RabbitMQConsumer {
     @Autowired
     private VendaService vendaService;
 
-    @RabbitListener(queues = {"Invoice"})
-    public void receive(@Payload String body) {
+    @RabbitListener(queues = {"Sale"})
+    public void receiveSale(@Payload String body) {
         Venda venda = null;
         try {
             venda = new ObjectMapper().readValue(body, Venda.class);
@@ -25,6 +25,16 @@ public class RabbitMQConsumer {
             e.printStackTrace();
         }
         System.out.println("Message " + venda);
+    }
+
+    @RabbitListener(queues = {"SaleRollback"})
+    public void receiveRollbackSale(@Payload String vendaId) {
+        try {
+            this.vendaService.rollback(Integer.parseInt(vendaId));
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("Received rollback message for venda: " + vendaId);
     }
 
 

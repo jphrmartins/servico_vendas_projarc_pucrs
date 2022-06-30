@@ -117,6 +117,7 @@ h1 i {
 .produto .qtd input[type="text"] {
   margin: 13px 0px 13px 8px;
   text-align: center;
+  color: white;
   height: 24px;
   width: 40px;
 }
@@ -130,7 +131,7 @@ h1 i {
 
   background: #ffc0cb;
   border-radius: 5px;
-  color: #ffffff;
+  color: #000;
   padding: 0 16px;
   border: none;
 
@@ -141,13 +142,6 @@ h1 i {
 .produto .select:hover {
   background: #8d5489;
   color: white;
-  transition: 1s;
-}
-
-.produto .select:active {
-  background: #8d5489;
-  color: white;
-  transition: 1s;
 }
 
 .produto .qtd {

@@ -2,6 +2,7 @@ package br.pucrs.adapter.controller;
 
 import br.pucrs.adapter.dto.SaleQuantityCheckRequest;
 import br.pucrs.application.exception.LimitExceedOnSaleException;
+import br.pucrs.domain.entity.ItemEstoque;
 import br.pucrs.domain.entity.Produto;
 import br.pucrs.domain.service.EstoqueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class EstoqueController {
     @Autowired
     public EstoqueController(EstoqueService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public List<ItemEstoque> listAll() {
+        return this.service.listAll();
     }
 
     @GetMapping("/produtos-disponiveis")

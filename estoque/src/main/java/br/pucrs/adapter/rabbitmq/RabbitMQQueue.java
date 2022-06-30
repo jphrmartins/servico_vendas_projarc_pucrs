@@ -1,4 +1,4 @@
-package br.pucrs.rabbitmq;
+package br.pucrs.adapter.rabbitmq;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQQueue {
 
-    @Value("Sale")
+    @Value("SaleRollback")
     private String message;
 
     @Bean

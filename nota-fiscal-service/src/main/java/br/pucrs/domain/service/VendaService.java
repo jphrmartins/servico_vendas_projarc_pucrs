@@ -8,4 +8,6 @@ public interface VendaService {
     void save(Venda venda);
 
     List<Venda> findAll();
+
+    void rollback(Integer vendaId);
 }

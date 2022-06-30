@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQQueue {
 
-    @Value("Invoice")
+    @Value("SaleConfirm")
     private String message;
 
     @Bean
