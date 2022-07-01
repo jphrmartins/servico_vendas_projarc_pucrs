@@ -7,3 +7,34 @@ services:
     ports:
       - '5672:5672'
       - '15672:15672'
+
+  eureka:
+    container_name: projarc_eureka
+    build: ./eureka
+    image: "projarc:eureka"
+    ports:
+      - '8761:8761'
+
+  estoque:
+    container_name: projarc_estoque
+    build: ./estoque
+    image: "projarc:estoque"
+    ports:
+      - "8100:8100"
+
+  nota-fiscal:
+    container_name: projarc_nota-fiscal
+    build: ./nota-fiscal-service
+    image: "projarc:nota-fiscal"
+    ports:
+      - "8081:8081"
+
+  app:
+    container_name: projarc_app
+    build: ./app
+    image: "projarc:app"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - estoque
+

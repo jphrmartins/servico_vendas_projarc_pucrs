@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "estoque", url = "localhost:8100/estoque")
+@FeignClient(name = "estoque")
 public interface EstoqueService {
-    @GetMapping("/produtos-disponiveis")
+    @GetMapping("/estoque/produtos-disponiveis")
     List<Produto> findAvailableProducts();
 
-    @GetMapping("/validar-quantidade")
+    @GetMapping("/estoque/validar-quantidade")
     boolean checkAvailability(@RequestParam("codProd") int[] productCode, @RequestParam("qtdade") int[] quantity);
 
-    @PostMapping("/validar-quantidade")
+    @PostMapping("/estoque/validar-quantidade")
     void checkSaleAvailability(@RequestBody SaleQuantityCheckRequest request);
 
-    @GetMapping("/produto/{id}")
+    @GetMapping("/estoque/produto/{id}")
     Produto getProdutoId(@PathVariable("id") int produtoId);
 }
